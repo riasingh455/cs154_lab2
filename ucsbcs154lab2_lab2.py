@@ -40,5 +40,6 @@ with pyrtl.conditional_assignment:
         alu_out |= pyrtl.signed_lt(rs_val, rt_val) #slt
 
 #writeback
-enable = pyrtl.Const(1, bitwidth=1)
+enable = pyrtl.WireVector(bitwidth=1, name='enable')
+enable <<= 1
 rf[rd] <<= pyrtl.MemBlock.EnabledWrite(data=alu_out, enable=enable)

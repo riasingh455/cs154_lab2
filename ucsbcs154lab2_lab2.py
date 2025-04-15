@@ -16,7 +16,7 @@ funct = instr[0:6]
 rs_val = rf[rs]
 rt_val = rf[rt]
 
-alu_out = pyrtl.WireVector(bitwidth=32, name='alu_result')
+alu_out = pyrtl.Output(bitwidth=32, name='alu_out')
 
 
 with pyrtl.conditional_assignment:

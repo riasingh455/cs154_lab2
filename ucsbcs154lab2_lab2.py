@@ -41,3 +41,6 @@ with pyrtl.conditional_assignment:
 
 #writeback
 rf[rd] <<= alu_result
+
+alu_out = pyrtl.Output(bitwidth=32, name='alu_out')
+alu_out <<= alu_result

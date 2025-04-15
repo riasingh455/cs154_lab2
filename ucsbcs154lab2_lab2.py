@@ -16,7 +16,7 @@ funct = instr[0:6]
 rs_val = rf[rs]
 rt_val = rf[rt]
 
-alu_result = pyrtl.WireVector(bitwidth=32, name='alu_result')
+alu_out = pyrtl.WireVector(bitwidth=32, name='alu_result')
 
 
 with pyrtl.conditional_assignment:
@@ -40,7 +40,4 @@ with pyrtl.conditional_assignment:
         alu_result |= pyrtl.signed_lt(rs_val, rt_val) #slt
 
 #writeback
-rf[rd] <<= alu_result
-
-alu_out = pyrtl.Output(bitwidth=32, name='alu_out')
-alu_out <<= alu_result
+rf[rd] <<= alu_out

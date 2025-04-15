@@ -31,9 +31,9 @@ with pyrtl.conditional_assignment:
     with funct == 38:
         alu_result |= rs_val ^ rt_val #xor
     with funct == 0:
-        alu_result |= rt_val << shamt #sll
+        alu_result |= pyrtl.shift_left_logical(rt_val, shamt) #sll
     with funct == 2:
-        alu_result |= rt_val >> shamt #srl
+        alu_result |= pyrtl.shift_right_logical(rt_val, shamt) #srl
     with funct == 3:
         alu_result |= pyrtl.shift_right_arithmetic(rt_val, shamt)#sra
     with funct == 42:
